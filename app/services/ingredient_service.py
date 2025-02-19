@@ -27,5 +27,6 @@ async def extract_ingredients_from_image(file):
     ingredients_list = clean_and_parse_ingredients(ingredients_text)
     prompt = f"write all ingredients in correct spelling and provide ingredients sperated with ',' and Do Not Provide anything else. ingredients_list : {ingredients_list}"
     result = analyze_with_groq(prompt)
-    print(result)
+    res = [v.strip() for v in result.split(',')]
     return [v.strip() for v in result.split(',')]
+

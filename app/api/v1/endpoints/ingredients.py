@@ -5,6 +5,7 @@ router = APIRouter()
 
 @router.post("/")
 async def extract_ingredients(file: UploadFile = File(...)):
+    print(f"Received file: {file.filename}, Content-Type: {file.content_type}")
     if not file:
         raise HTTPException(status_code=400, detail="No file provided")
     try:
